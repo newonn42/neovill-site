@@ -1,14 +1,8 @@
-/* 니오빌 원룸텔 – 화면 동작 (1단계: 서버 연결 전) */
+/* 니오빌 원룸텔 – 화면 동작 (공실 표시는 서버 functions/index.js 가 채움) */
 (function () {
   'use strict';
 
   var params = new URLSearchParams(location.search);
-
-  /* ── 홈: 1단계 확인용 만실 화면 보기 (?state=full) ──
-     2단계부터는 데이터베이스의 실제 공실로 자동 결정됩니다. */
-  if (document.querySelector('.status') && params.get('state') === 'full') {
-    document.body.classList.add('is-full');
-  }
 
   /* ── 자주 묻는 질문 펼치기 ── */
   var faqButtons = document.querySelectorAll('.faq button');

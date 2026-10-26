@@ -27,18 +27,31 @@
 
   <div class="hero" data-k="hero">[대표 사진 – 외관 또는 대표 방]</div>
 
-  <!-- 공실이 있을 때 -->
-  <section class="status open-only" aria-labelledby="st-open">
+  <!-- 공실 정보를 못 읽었을 때 (기본 화면) -->
+  <section class="status" data-sec="unknown" aria-labelledby="st-unknown">
     <div class="status-head">
       <span class="dot" aria-hidden="true"></span>
-      <h1 class="status-title" id="st-open">지금 입실 가능 <span data-v="emptyTotal">1</span>실</h1>
+      <h1 class="status-title" id="st-unknown">공실은 문의해 주세요</h1>
+    </div>
+    <p class="status-desc">지금 공실 현황을 불러오지 못했습니다. 신청을 남기시거나 아래 카톡·전화로 문의해 주세요.</p>
+    <div class="btn-row">
+      <a class="btn" href="/apply.html?kind=move">입실 신청</a>
+      <a class="btn ghost" href="/apply.html?kind=view">방보기 신청</a>
+    </div>
+  </section>
+
+  <!-- 공실이 있을 때 -->
+  <section class="status open-only" data-sec="open" aria-labelledby="st-open" hidden>
+    <div class="status-head">
+      <span class="dot" aria-hidden="true"></span>
+      <h1 class="status-title" id="st-open">지금 입실 가능 <span data-v="emptyTotal">0</span>실</h1>
     </div>
     <div class="counts">
       <div class="count" data-v-on="premium"><span>프리미엄 외창</span><strong data-v="premium">0</strong></div>
-      <div class="count on" data-v-on="outer"><span>외창</span><strong data-v="outer">1</strong></div>
+      <div class="count" data-v-on="outer"><span>외창</span><strong data-v="outer">0</strong></div>
       <div class="count" data-v-on="inner"><span>내창</span><strong data-v="inner">0</strong></div>
     </div>
-    <p class="soon" data-v="soonText">10/20부터 입실 가능 · 외창 1실</p>
+    <p class="soon" data-v="soonText" hidden></p>
     <div class="btn-row">
       <a class="btn" href="/apply.html?kind=move">입실 신청</a>
       <a class="btn ghost" href="/apply.html?kind=view">방보기 신청</a>
@@ -47,13 +60,13 @@
   </section>
 
   <!-- 만실일 때 -->
-  <section class="status full-only" aria-labelledby="st-full">
+  <section class="status full-only" data-sec="full" aria-labelledby="st-full">
     <div class="status-head">
       <span class="dot red" aria-hidden="true"></span>
       <h1 class="status-title" id="st-full">현재 만실입니다</h1>
     </div>
     <p class="status-desc" data-k="fullMsg">대기 신청을 남겨주시면 <b>공실이 생길 때 가장 먼저 연락</b>드립니다. 전화하지 않으셔도 됩니다.</p>
-    <p class="soon" data-v="soonTextFull">다음 입실 가능 예정 · 11/20 내창 1실</p>
+    <p class="soon" data-v="soonTextFull" hidden></p>
     <a class="btn" href="/apply.html?kind=wait">대기 신청하기</a>
     <a class="btn ghost" href="/apply.html?kind=view">미리 방보기 신청</a>
   </section>
@@ -64,7 +77,7 @@
     <article class="room">
       <div class="room-photo">[프리미엄 외창 사진]</div>
       <div class="room-body">
-        <div class="room-row"><h3 class="room-name">프리미엄 외창</h3><span class="badge" data-v="badgePremium">만실</span></div>
+        <div class="room-row"><h3 class="room-name">프리미엄 외창</h3><span class="badge" data-v="badgePremium">문의</span></div>
         <p class="price" data-k="pricePremium">월 40만 원~</p>
         <p class="feat" data-k="featPremium">가장 넓은 외창 방 · 채광·환기</p>
       </div>
@@ -73,7 +86,7 @@
     <article class="room">
       <div class="room-photo">[외창 사진]</div>
       <div class="room-body">
-        <div class="room-row"><h3 class="room-name">외창</h3><span class="badge on" data-v="badgeOuter">1실 입실 가능</span></div>
+        <div class="room-row"><h3 class="room-name">외창</h3><span class="badge" data-v="badgeOuter">문의</span></div>
         <p class="price" data-k="priceOuter">월 34~38만 원</p>
         <p class="feat" data-k="featOuter">바깥 창문 · 밝고 환기가 잘 되는 방</p>
       </div>
@@ -82,7 +95,7 @@
     <article class="room">
       <div class="room-photo">[내창 사진]</div>
       <div class="room-body">
-        <div class="room-row"><h3 class="room-name">내창</h3><span class="badge" data-v="badgeInner">만실</span></div>
+        <div class="room-row"><h3 class="room-name">내창</h3><span class="badge" data-v="badgeInner">문의</span></div>
         <p class="price" data-k="priceInner">월 32~34만 원</p>
         <p class="feat" data-k="featInner">복도 쪽 창 · 합리적인 가격</p>
       </div>

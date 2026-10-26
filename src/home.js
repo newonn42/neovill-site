@@ -1,4 +1,4 @@
-/* 니오빌 원룸텔 – 홈 화면에 실제 공실을 채워 보내기 (2단계)
+/* 홈 화면에 실제 공실을 채워 보내기
    - 데이터베이스(D1, 이름 DB)에서 방 상태를 읽어 화면 숫자를 채웁니다.
    - 읽기에 실패하면 "카톡·전화로 문의" 안전 화면이 그대로 나갑니다. */
 
@@ -7,7 +7,7 @@ const LABEL = { premium: '프리미엄 외창', outer: '외창', inner: '내창'
 const BADGE_KEY = { premium: 'badgePremium', outer: 'badgeOuter', inner: 'badgeInner' };
 
 // 검색 차단 · 보안 헤더 (8단계 오픈 때 X-Robots-Tag 줄 삭제)
-const PAGE_HEADERS = {
+export const PAGE_HEADERS = {
   'Content-Type': 'text/html; charset=utf-8',
   'Cache-Control': 'no-store',
   'X-Robots-Tag': 'noindex, nofollow',
@@ -129,8 +129,7 @@ export function render(response, view) {
   return new Response(out.body, { status: 200, headers });
 }
 
-export async function onRequestGet(context) {
-  const { env, request } = context;
+export async function handleHome(request, env) {
   const asset = await env.ASSETS.fetch(request);
   const type = asset.headers.get('content-type') || '';
   if (!asset.ok || !type.includes('text/html')) return asset;

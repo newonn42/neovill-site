@@ -1,12 +1,4 @@
-CREATE TABLE IF NOT EXISTS rooms (
-  no TEXT PRIMARY KEY,
-  type TEXT NOT NULL CHECK (type IN ('premium', 'outer', 'inner')),
-  status TEXT NOT NULL DEFAULT 'occupied' CHECK (status IN ('occupied', 'empty', 'soon', 'hidden')),
-  avail_date TEXT,
-  sort INTEGER NOT NULL DEFAULT 0,
-  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
-
+-- 니오빌 원룸텔 방 18실 + 사무실 (관리자 화면 대신 D1 Console에 붙여 넣을 때 사용)
 INSERT OR IGNORE INTO rooms (no, type, status, sort) VALUES
   ('601', 'premium', 'occupied', 1),
   ('602', 'premium', 'occupied', 2),

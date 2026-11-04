@@ -47,4 +47,6 @@
 - 오래 만실일 때만: `/admin` → **모집 상태** → **만실** (홈 문구가 "현재 만실 · 대기 신청"으로 바뀜)
 
 ## 짧은 주소 (선택)
-`○○.pages.dev` 주소를 쓰고 싶으면 `extras/pages-proxy/README.md`를 따라 Pages 프로젝트를 하나 만듭니다. 주소창에는 짧은 주소가 그대로 보입니다.
+`○○.pages.dev` 주소를 쓰려면 이 저장소를 연결한 Cloudflare **Pages** 프로젝트를 하나 만듭니다 (Build command 비움, Build output `public`).
+저장소 맨 위 `functions/`가 모든 요청을 실제 사이트(Worker)로 전달하므로 주소창에는 짧은 주소가 그대로 보입니다.
+대상 주소는 Pages 환경변수 `TARGET_URL`로 바꿉니다 (예: `https://이름.계정.workers.dev`). Worker로 설치할 때 `functions/`는 쓰이지 않습니다.
